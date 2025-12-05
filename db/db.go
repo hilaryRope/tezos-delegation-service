@@ -35,10 +35,7 @@ func MigrateWithPath(databaseURL, migrationsPath string) error {
 		return fmt.Errorf("failed to open database for migration: %w", err)
 	}
 	defer func(db *sql.DB) {
-		err := db.Close()
-		if err != nil {
-
-		}
+		_ = db.Close()
 	}(db)
 
 	driver, err := postgres.WithInstance(db, &postgres.Config{})

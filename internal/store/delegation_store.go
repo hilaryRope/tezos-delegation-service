@@ -46,10 +46,7 @@ func (s *delegationStore) BulkInsert(ctx context.Context, rows []InsertDelegatio
 		return fmt.Errorf("begin transaction: %w", err)
 	}
 	defer func(tx *sql.Tx) {
-		err := tx.Rollback()
-		if err != nil {
-
-		}
+		_ = tx.Rollback()
 	}(tx)
 
 	stmt, err := tx.PrepareContext(ctx, `

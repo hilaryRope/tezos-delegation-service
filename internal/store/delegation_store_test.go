@@ -19,10 +19,7 @@ func TestBulkInsert_Idempotent(t *testing.T) {
 	dbConn, err := db.New(dsn)
 	require.NoError(t, err, "postgres must be available (use: docker-compose up)")
 	defer func(dbConn *sql.DB) {
-		err := dbConn.Close()
-		if err != nil {
-
-		}
+		_ = dbConn.Close()
 	}(dbConn)
 
 	// Get absolute path to migrations directory
