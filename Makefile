@@ -1,6 +1,6 @@
 APP_NAME=tezos-delegation-service
 
-.PHONY: help run test test-integration lint docker-build docker-up docker-down db-up db-down
+.PHONY: help build run test test-coverage lint docker-build docker-up docker-down db-up db-down
 
 .DEFAULT_GOAL := help
 
@@ -8,11 +8,17 @@ help:
 	@echo "Available targets:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
+build: ## Build the application
+	go build -o bin/$(APP_NAME) ./cmd
+
 run: ## Run the application locally
 	go run ./cmd
 
 test: ## Run unit tests (skips integration tests)
 	go test -short ./...
+
+test-coverage: ## Run tests with coverage
+	go test -short -coverprofile=coverage.out ./...
 
 test-integration: ## Run all tests including integration tests (requires database)
 	go test ./...
