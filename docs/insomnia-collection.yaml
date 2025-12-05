@@ -1,0 +1,148 @@
+_type: export
+__export_format: 4
+__export_date: 2025-11-10T17:39:00.000Z
+__export_source: insomnia.desktop.app:v2023.5.8
+resources:
+  - _id: req_health_check
+    parentId: fld_tezos_delegation
+    modified: 1699459200000
+    created: 1699459200000
+    url: http://localhost:8080/health
+    name: Health Check
+    description: Check service health and database connectivity
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1699459200000
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_get_all_delegations
+    parentId: fld_tezos_delegation
+    modified: 1699459300000
+    created: 1699459300000
+    url: http://localhost:8080/xtz/delegations
+    name: Get All Delegations
+    description: Fetch all delegations (first page, 50 items)
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1699459300000
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_get_delegations_by_year
+    parentId: fld_tezos_delegation
+    modified: 1699459400000
+    created: 1699459400000
+    url: http://localhost:8080/xtz/delegations
+    name: Get Delegations by Year (2022)
+    description: Filter delegations by year
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_year
+        name: year
+        value: "2022"
+        description: Filter by year (YYYY format)
+        disabled: false
+    headers: []
+    authentication: {}
+    metaSortKey: -1699459400000
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_get_paginated_delegations
+    parentId: fld_tezos_delegation
+    modified: 1699459500000
+    created: 1699459500000
+    url: http://localhost:8080/xtz/delegations
+    name: Get Delegations (Page 2)
+    description: Fetch second page of delegations
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_page
+        name: page
+        value: "2"
+        description: Page number (1-based)
+        disabled: false
+    headers: []
+    authentication: {}
+    metaSortKey: -1699459500000
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_get_delegations_year_and_page
+    parentId: fld_tezos_delegation
+    modified: 1699459600000
+    created: 1699459600000
+    url: http://localhost:8080/xtz/delegations
+    name: Get Delegations (Year + Page)
+    description: Combine year filter with pagination
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_year
+        name: year
+        value: "2023"
+        description: Filter by year
+        disabled: false
+      - id: pair_page
+        name: page
+        value: "1"
+        description: Page number
+        disabled: false
+    headers: []
+    authentication: {}
+    metaSortKey: -1699459600000
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_tezos_delegation
+    parentId: wrk_tezos_delegation
+    modified: 1699459100000
+    created: 1699459100000
+    name: Tezos Delegation API
+    description: API endpoints for Tezos delegation service
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1699459100000
+    _type: request_group
+  - _id: wrk_tezos_delegation
+    parentId: null
+    modified: 1699459000000
+    created: 1699459000000
+    name: Tezos Delegation Service
+    description: Collection for testing Tezos Delegation Service API
+    scope: collection
+    _type: workspace
